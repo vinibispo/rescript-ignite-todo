@@ -14,3 +14,11 @@ module PlusCircle = {
 module ClipboardText = {
   @module("@phosphor-icons/react") external make: iconComponent = "ClipboardText"
 }
+
+module Trash = {
+  @module("@phosphor-icons/react") external make: iconComponent = "Trash"
+}
+
+module Check = {
+  @module("@phosphor-icons/react") external make: iconComponent = "Check"
+}

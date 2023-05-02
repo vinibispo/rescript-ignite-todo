@@ -11,14 +11,24 @@ module EmptyList = {
   }
 }
 
+type task = {
+  id: string,
+  text: string,
+  done: bool,
+}
+type tasks = array<task>
+
 @react.component
 let make = (~tasks, ~onDelete, ~onSelect) => {
-  switch tasks {
-  | [] => <EmptyList />
-  | value => <ul className={styles["list"]}>
-      {tasks->Render.map((task, _) =>
-        <ListItem onDelete onSelect key={task.id} id={task.id} text={task.text} done={task.done} />
-      )}
-    </ul>
-  }
+  <div className={styles["listContent"]}>
+    {switch tasks {
+    | [] => <EmptyList />
+    | _ =>
+      <ul className={styles["list"]}>
+        {tasks->Render.map((task, _) =>
+          <Task onDelete onSelect key={task.id} id={task.id} text={task.text} done={task.done} />
+        )}
+      </ul>
+    }}
+  </div>
 }

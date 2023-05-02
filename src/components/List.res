@@ -1,13 +1,7 @@
 @module("./List.module.css") external styles: {..} = "default"
 
-@module("crypto") external randomUuid: () => string = "randomUUID"
+@module("uuid") external uuid: unit => string = "v4"
 
-type task = {
-  id: string,
-  text: string,
-  done: bool,
-}
-type tasks = array<task>
 @react.component
 let make = () => {
   let (text, setText) = React.useState(() => "")
@@ -21,30 +15,30 @@ let make = () => {
   }
 
   let handleSubmitForm = e => {
-      ReactEvent.Synthetic.preventDefault(e)
-      let newTask = {
-        id: randomUuid(),
-        text,
-        done: false,
-      }
-      setTasks(tasks => tasks->Belt.Array.concat([newTask]))
+    ReactEvent.Synthetic.preventDefault(e)
+    let newTask: ListContent.task = {
+      id: uuid(),
+      text,
+      done: false,
     }
+    setTasks(tasks => tasks->Belt.Array.concat([newTask]))
+  }
 
-    let onDelete = (id) => {
-      setTasks(tasks => tasks->Belt.Array.keep(task => task.id !== id))
-    }
+  let onDelete = id => {
+    setTasks(tasks => tasks->Belt.Array.keep(task => task.id !== id))
+  }
 
-    let onSelect = (id) => {
-      setTasks(tasks =>
-        tasks->Belt.Array.map(task =>
-          if (task.id === id) {
-            { ...task, done: !task.done }
-          } else {
-            task
-          },
-        ),
+  let onSelect = id => {
+    setTasks(tasks =>
+      tasks->Belt.Array.map(task =>
+        if task.id === id {
+          {...task, done: !task.done}
+        } else {
+          task
+        }
       )
-    }
+    )
+  }
 
   let handleInputValidity = e => {
     let input = ReactEvent.Synthetic.target(e)
