@@ -11,15 +11,9 @@ module EmptyList = {
   }
 }
 
-type task = {
-  id: string,
-  text: string,
-  done: bool,
-}
-type tasks = array<task>
-
 @react.component
-let make = (~tasks, ~onDelete, ~onSelect) => {
+let make = () => {
+  let {tasks} = UseTasksHook.useTasks()
   let createdTasksCount = tasks->Js.Array2.length
 
   let doneTasksCount = tasks->Js.Array2.filter(tasks => tasks.done)->Js.Array2.length
@@ -39,7 +33,7 @@ let make = (~tasks, ~onDelete, ~onSelect) => {
     | _ =>
       <ul className={styles["list"]}>
         {tasks->Render.map((task, _) =>
-          <Task onDelete onSelect key={task.id} id={task.id} text={task.text} done={task.done} />
+          <Task key={task.id} id={task.id} text={task.text} done={task.done} />
         )}
       </ul>
     }}
