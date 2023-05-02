@@ -1,0 +1,17 @@
+.main {
+  width: 100%;
+  background: var(--gray-500);
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--gray-100);
+  border: 1px solid transparent;
+  transition: border 0.2s;
+}
+
+.main::placeholder {
+  color: var(--gray-300);
+}
+
+.main:focus {
+  border: 1px solid var(--purple-dark);
+}
