@@ -1,0 +1,20 @@
+.main {
+  width: 100%;
+  max-width: 736px;
+  margin-top: -1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5.3rem;
+  padding: 1rem;
+}
+
+.header {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

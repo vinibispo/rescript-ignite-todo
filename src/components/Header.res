@@ -4,6 +4,6 @@
 @react.component
 let make = () => {
   <header className={styles["main"]}>
-    <img src={logoImg} />
+    <img src={logoImg} alt="Website Logo" />
   </header>
 }
