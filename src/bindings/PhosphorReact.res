@@ -10,3 +10,7 @@ type iconComponent = React.component<props>
 module PlusCircle = {
   @module("@phosphor-icons/react") external make: iconComponent = "PlusCircle"
 }
+
+module ClipboardText = {
+  @module("@phosphor-icons/react") external make: iconComponent = "ClipboardText"
+}
