@@ -2,5 +2,10 @@
 
 @react.component
 let make = () => {
-  <div> {"Hello World!"->React.string} </div>
+  <Button onClick={_ => Js.log("Clicked")}>
+    <React.Fragment>
+      {"Criar "->React.string}
+      <PhosphorReact.PlusCircle size={15} />
+    </React.Fragment>
+  </Button>
 }
