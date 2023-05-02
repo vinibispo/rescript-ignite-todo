@@ -8,7 +8,7 @@ let make = (~id, ~text, ~done, ~onSelect, ~onDelete) => {
     </button>
     <span> {text->React.string} </span>
     <button className={styles["deleteButton"]} onClick={_ => onDelete(id)}>
-    <PhosphorReact.Trash weight=#light />
+      <PhosphorReact.Trash size={24} />
     </button>
   </div>
 }

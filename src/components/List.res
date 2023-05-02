@@ -62,7 +62,7 @@ let make = () => {
           </React.Fragment>
         </Button>
       </form>
-      <ListContent tasks onDelete onSelect />
     </header>
+    <ListContent tasks onDelete onSelect />
   </div>
 }

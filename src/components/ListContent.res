@@ -20,7 +20,20 @@ type tasks = array<task>
 
 @react.component
 let make = (~tasks, ~onDelete, ~onSelect) => {
+  let createdTasksCount = tasks->Js.Array2.length
+
+  let doneTasksCount = tasks->Js.Array2.filter(tasks => tasks.done)->Js.Array2.length
   <div className={styles["listContent"]}>
+    <header>
+      <div className={styles["createdTasks"]}>
+        {"Tarefas criadas"->React.string}
+        <span> {createdTasksCount->React.int} </span>
+      </div>
+      <div className={styles["doneTasks"]}>
+        {"Concluídas"->React.string}
+        <span>{doneTasksCount->React.int}</span>
+      </div>
+    </header>
     {switch tasks {
     | [] => <EmptyList />
     | _ =>
