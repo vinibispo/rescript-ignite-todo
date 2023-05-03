@@ -7,7 +7,7 @@ let make = () => {
   let handleInputChange = e => {
     let input = ReactEvent.Synthetic.target(e)
     input["setCustomValidity"](. "")->ignore
-    let value = input["value"]
+    let value = input["value"]->String.trim
     setText(_ => value)
   }
 
@@ -16,6 +16,8 @@ let make = () => {
     addTask(text)
     setText(_ => "")
   }
+
+  let isSubmitDisabled = text->String.trim->String.length == 0
 
   let handleInputValidity = e => {
     let input = ReactEvent.Synthetic.target(e)
@@ -30,7 +32,7 @@ let make = () => {
       onInvalid={handleInputValidity}
       required={true}
     />
-    <Button type_="submit">
+    <Button type_="submit" disabled={isSubmitDisabled}>
       <React.Fragment>
         {"Criar "->React.string}
         <PhosphorReact.PlusCircle size={15} />
