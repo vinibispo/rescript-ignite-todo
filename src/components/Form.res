@@ -7,13 +7,13 @@ let make = () => {
   let handleInputChange = e => {
     let input = ReactEvent.Synthetic.target(e)
     input["setCustomValidity"](. "")->ignore
-    let value = input["value"]->String.trim
+    let value = input["value"]
     setText(_ => value)
   }
 
   let handleSubmitForm = e => {
     ReactEvent.Synthetic.preventDefault(e)
-    addTask(text)
+    addTask(text->String.trim)
     setText(_ => "")
   }
 
